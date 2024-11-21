@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 public class Locators extends Connect {
     private static final String bids = "//div[contains(@class, 'bid innerContainer')]";
     private static final String asks = "//div[contains(@class, 'ask innerContainer')]";
+    private static final String differences = "//div[@class='change genToolTip']/span[1]";
+    private static final String percents = "//span[contains(@class, 'pcp')]";
     private static final String exchangeNames = "//div[@class='topBox']/a";
 
     public List<String> getBids() {
@@ -18,6 +20,16 @@ public class Locators extends Connect {
 
     public List<String> getAsks() {
         Elements elements = document.selectXpath(asks);
+        return elements.stream().map(Element::text).collect(Collectors.toList());
+    }
+
+    public List<String> getDifferences() {
+        Elements elements = document.selectXpath(differences);
+        return elements.stream().map(Element::text).collect(Collectors.toList());
+    }
+
+    public List<String> getPercents() {
+        Elements elements = document.selectXpath(percents);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
