@@ -1,12 +1,16 @@
-package main;
+package main.model.investing;
 
+import main.model.Connector;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Locators extends Connect {
+/**
+ * Класс реализации парсинга с сайта ru.investing.com
+ */
+public class InvestParser extends Connector {
     private static final String bids = "//div[contains(@class, 'bid innerContainer')]";
     private static final String asks = "//div[contains(@class, 'ask innerContainer')]";
     private static final String differences = "//div[@class='change genToolTip']/span[1]";
