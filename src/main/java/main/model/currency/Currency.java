@@ -1,7 +1,4 @@
-package main.model.investing;
-
-import main.data.Resources;
-import main.model.Connector;
+package main.model.currency;
 
 import java.util.List;
 
@@ -12,8 +9,6 @@ public class Currency {
     private static final CurrencyParser parser = new CurrencyParser();
 
     public void run() {
-        Connector.connect(Resources.CURRENCY.getUrl());
-
         List<String> bids = parser.getBids();
         List<String> asks = parser.getAsks();
         List<String> exchangeNames = parser.getExchangeNames();
@@ -24,6 +19,7 @@ public class Currency {
             System.out.println(exchangeNames.get(i));
             System.out.println("Bid = " + bids.get(i) + ", Ask = " + asks.get(i));
             System.out.println("Dif = " + differences.get(i) + ", Per = " + percents.get(i));
+            System.out.println();
         }
     }
 }

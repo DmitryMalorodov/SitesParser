@@ -1,16 +1,25 @@
 package main.controller;
 
 import main.data.Resources;
-import main.model.investing.Currency;
+import main.model.Connector;
+import main.model.commodity.Commodity;
+import main.model.currency.Currency;
 
 /**
- * Класс для управления с какого сайта будем запускать парсинг
+ * Класс для управления с какого сайта будем запускать парсинг и подключение к нему
  */
 public class Manager {
 
     public void manage(Resources resource) {
-        if (resource.equals(Resources.CURRENCY)) {
-            new Currency().run();
+        switch (resource) {
+            case CURRENCY -> {
+                Connector.connect(Resources.CURRENCY.getUrl());
+                new Currency().run();
+            }
+            case COMMODITY -> {
+                Connector.connect(Resources.COMMODITY.getUrl());
+                new Commodity().run();
+            }
         }
     }
 }

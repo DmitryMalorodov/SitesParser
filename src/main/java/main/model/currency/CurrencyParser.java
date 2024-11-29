@@ -1,4 +1,4 @@
-package main.model.investing;
+package main.model.currency;
 
 import main.model.Connector;
 import org.jsoup.nodes.Element;
