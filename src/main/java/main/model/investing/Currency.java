@@ -6,13 +6,13 @@ import main.model.Connector;
 import java.util.List;
 
 /**
- * Класс для парсинга с сайта ru.investing.com
+ * Класс для парсинга с сайта ru.investing.com и вывода информации
  */
-public class Investing {
-    private static final InvestParser parser = new InvestParser();
+public class Currency {
+    private static final CurrencyParser parser = new CurrencyParser();
 
     public void run() {
-        Connector.connect(Resources.INVESTING.getUrl());
+        Connector.connect(Resources.CURRENCY.getUrl());
 
         List<String> bids = parser.getBids();
         List<String> asks = parser.getAsks();
