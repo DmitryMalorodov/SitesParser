@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * Класс реализации парсинга с сайта ru.investing.com
  */
-public class InvestParser extends Connector {
+public class CurrencyParser extends Connector {
     private static final String bids = "//div[contains(@class, 'bid innerContainer')]";
     private static final String asks = "//div[contains(@class, 'ask innerContainer')]";
     private static final String differences = "//div[@class='change genToolTip']/span[1]";

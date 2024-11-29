@@ -1,7 +1,7 @@
 package main.controller;
 
 import main.data.Resources;
-import main.model.investing.Investing;
+import main.model.investing.Currency;
 
 /**
  * Класс для управления с какого сайта будем запускать парсинг
@@ -9,8 +9,8 @@ import main.model.investing.Investing;
 public class Manager {
 
     public void manage(Resources resource) {
-        if (resource.equals(Resources.INVESTING)) {
-            new Investing().run();
+        if (resource.equals(Resources.CURRENCY)) {
+            new Currency().run();
         }
     }
 }
