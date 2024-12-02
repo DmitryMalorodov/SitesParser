@@ -16,6 +16,7 @@ public class CurrencyParser extends Connector {
     private static final String dayDif = "//div[@class='change genToolTip']/span[1]";
     private static final String dayDifPercents = "//span[contains(@class, 'pcp')]";
     private static final String exchangeNames = "//div[@class='topBox']/a";
+    private static final String difTime = "//div[@class='topBox']/span";
 
     public List<String> getBids() {
         Elements elements = document.selectXpath(bids);
@@ -39,6 +40,11 @@ public class CurrencyParser extends Connector {
 
     public List<String> getExchangeNames() {
         Elements elements = document.selectXpath(exchangeNames);
+        return elements.stream().map(Element::text).collect(Collectors.toList());
+    }
+
+    public List<String> getDifTime() {
+        Elements elements = document.selectXpath(difTime);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 }
