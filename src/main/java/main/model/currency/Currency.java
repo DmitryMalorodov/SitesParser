@@ -1,5 +1,7 @@
 package main.model.currency;
 
+import main.model.Helper;
+
 import java.util.List;
 
 /**
@@ -13,12 +15,15 @@ public class Currency {
     private List<String> exchangeNames;
     private List<String> dayDiffs;
     private List<String> dayDifPercents;
+    private List<String> difTime;
+    private String currentData;
 
     public void run() {
         init();
 
         for (int i = 0; i < bids.size(); i++) {
-            System.out.println(exchangeNames.get(i));
+            System.out.println(exchangeNames.get(i) + ", " + currentData);
+            System.out.println("Last dif time - " + difTime.get(i));
             System.out.println("Bid = " + bids.get(i) + ", Ask = " + asks.get(i));
             System.out.println("Dif = " + dayDiffs.get(i) + ", Per = " + dayDifPercents.get(i));
             System.out.println();
@@ -31,5 +36,7 @@ public class Currency {
         exchangeNames = parser.getExchangeNames();
         dayDiffs = parser.getDayDiffs();
         dayDifPercents = parser.getDayDifPercents();
+        difTime = parser.getDifTime();
+        currentData = Helper.getCurrentData();
     }
 }
