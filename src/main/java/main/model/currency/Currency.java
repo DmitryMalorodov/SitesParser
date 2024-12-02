@@ -8,18 +8,28 @@ import java.util.List;
 public class Currency {
     private static final CurrencyParser parser = new CurrencyParser();
 
+    private List<String> bids;
+    private List<String> asks;
+    private List<String> exchangeNames;
+    private List<String> dayDiffs;
+    private List<String> dayDifPercents;
+
     public void run() {
-        List<String> bids = parser.getBids();
-        List<String> asks = parser.getAsks();
-        List<String> exchangeNames = parser.getExchangeNames();
-        List<String> differences = parser.getDifferences();
-        List<String> percents = parser.getPercents();
+        init();
 
         for (int i = 0; i < bids.size(); i++) {
             System.out.println(exchangeNames.get(i));
             System.out.println("Bid = " + bids.get(i) + ", Ask = " + asks.get(i));
-            System.out.println("Dif = " + differences.get(i) + ", Per = " + percents.get(i));
+            System.out.println("Dif = " + dayDiffs.get(i) + ", Per = " + dayDifPercents.get(i));
             System.out.println();
         }
+    }
+
+    private void init() {
+        bids = parser.getBids();
+        asks = parser.getAsks();
+        exchangeNames = parser.getExchangeNames();
+        dayDiffs = parser.getDayDiffs();
+        dayDifPercents = parser.getDayDifPercents();
     }
 }

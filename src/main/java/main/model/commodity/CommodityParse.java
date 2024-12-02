@@ -7,6 +7,9 @@ import org.jsoup.select.Elements;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Класс реализации парсинга с сайта tradingeconomics.com
+ */
 public class CommodityParse extends Connector {
     private static final String commodityNames = "//td[@class='datatable-item-first']//b";
     private static final String prices = "//td[@class='datatable-item-first']//..//td[@id='p']";
