@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class CurrencyParser extends Connector {
     private static final String bids = "//div[contains(@class, 'bid innerContainer')]";
     private static final String asks = "//div[contains(@class, 'ask innerContainer')]";
-    private static final String differences = "//div[@class='change genToolTip']/span[1]";
-    private static final String percents = "//span[contains(@class, 'pcp')]";
+    private static final String dayDif = "//div[@class='change genToolTip']/span[1]";
+    private static final String dayDifPercents = "//span[contains(@class, 'pcp')]";
     private static final String exchangeNames = "//div[@class='topBox']/a";
 
     public List<String> getBids() {
@@ -27,13 +27,13 @@ public class CurrencyParser extends Connector {
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getDifferences() {
-        Elements elements = document.selectXpath(differences);
+    public List<String> getDayDiffs() {
+        Elements elements = document.selectXpath(dayDif);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getPercents() {
-        Elements elements = document.selectXpath(percents);
+    public List<String> getDayDifPercents() {
+        Elements elements = document.selectXpath(dayDifPercents);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
