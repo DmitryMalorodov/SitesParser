@@ -2,8 +2,9 @@ package main.controller;
 
 import main.data.Resources;
 import main.model.Connector;
+import main.model.Helper;
 import main.model.commodity.Commodity;
-import main.model.currency.Currency;
+import main.model.currency.CurrencyPrint;
 
 /**
  * Класс для управления с какого сайта будем запускать парсинг и подключение к нему
@@ -14,7 +15,7 @@ public class Manager {
         switch (resource) {
             case CURRENCY -> {
                 Connector.connect(Resources.CURRENCY.getUrl());
-                new Currency().run();
+                new CurrencyPrint().run(Helper.keyboardIn());
             }
             case COMMODITY -> {
                 Connector.connect(Resources.COMMODITY.getUrl());
