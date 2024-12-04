@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Класс реализации парсинга с сайта ru.investing.com
+ * Класс реализации парсинга
  */
 public class CurrencyParser extends Connector {
     private static final String bids = "//div[contains(@class, 'bid innerContainer')]";
@@ -20,32 +20,32 @@ public class CurrencyParser extends Connector {
     private static final String exchangeNames = "//div[@class='topBox']/a";
     private static final String difTime = "//div[@class='topBox']/span";
 
-    public List<String> getBids() {
+    private List<String> getBids() {
         Elements elements = document.selectXpath(bids);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getAsks() {
+    private List<String> getAsks() {
         Elements elements = document.selectXpath(asks);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getDayDiffs() {
+    private List<String> getDayDiffs() {
         Elements elements = document.selectXpath(dayDif);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getDayDifPercents() {
+    private List<String> getDayDifPercents() {
         Elements elements = document.selectXpath(dayDifPercents);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getExchangeNames() {
+    private List<String> getExchangeNames() {
         Elements elements = document.selectXpath(exchangeNames);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }
 
-    public List<String> getDifTime() {
+    private List<String> getDifTime() {
         Elements elements = document.selectXpath(difTime);
         return elements.stream().map(Element::text).collect(Collectors.toList());
     }

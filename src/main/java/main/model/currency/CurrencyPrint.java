@@ -3,13 +3,18 @@ package main.model.currency;
 import java.util.List;
 
 /**
- * Класс для парсинга с сайта ru.investing.com и вывода информации
+ * Класс для вывода информации в консоль
  */
 public class CurrencyPrint {
     private static final CurrencyParser parser = new CurrencyParser();
 
     public void run(String currencyForFilter) {
-        List<Currency> currencies = getFinalList(currencyForFilter);
+        List<Currency> currencies;
+        if (!currencyForFilter.isEmpty()) {
+            currencies = CurrencyFilter.filterByCurrency(currencyForFilter, parser.createListOfCurrencies());
+        } else {
+            currencies = parser.createListOfCurrencies();
+        }
 
         for (Currency currency : currencies) {
             System.out.println(currency.getExchangeNames() + ", " + currency.getCurrentData());
@@ -17,16 +22,6 @@ public class CurrencyPrint {
             System.out.println("Bid = " + currency.getBids() + ", Ask = " + currency.getAsks());
             System.out.println("Dif = " + currency.getDayDiffs() + ", Per = " + currency.getDayDifPercents());
             System.out.println();
-        }
-    }
-
-    private List<Currency> getFinalList(String currencyForFilter) {
-        if (currencyForFilter.isEmpty()) {
-            return parser.createListOfCurrencies();
-        } else {
-            return parser.createListOfCurrencies().stream()
-                    .filter(x -> x.getExchangeNames().contains(currencyForFilter))
-                    .toList();
         }
     }
 }
