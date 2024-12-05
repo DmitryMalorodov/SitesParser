@@ -3,16 +3,16 @@ package main.model.currency;
 public class Currency {
     private final String bids;
     private final String asks;
-    private final String exchangeNames;
+    private final String currencyNames;
     private final String dayDiffs;
     private final String dayDifPercents;
     private final String difTime;
     private final String currentData;
 
-    public Currency(String bids, String asks, String exchangeNames, String dayDiffs, String dayDifPercents, String difTime, String currentData) {
+    public Currency(String bids, String asks, String currencyNames, String dayDiffs, String dayDifPercents, String difTime, String currentData) {
         this.bids = bids;
         this.asks = asks;
-        this.exchangeNames = exchangeNames;
+        this.currencyNames = currencyNames;
         this.dayDiffs = dayDiffs;
         this.dayDifPercents = dayDifPercents;
         this.difTime = difTime;
@@ -27,8 +27,8 @@ public class Currency {
         return asks;
     }
 
-    public String getExchangeNames() {
-        return exchangeNames;
+    public String getCurrencyNames() {
+        return currencyNames;
     }
 
     public String getDayDiffs() {

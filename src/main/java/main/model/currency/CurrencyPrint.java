@@ -17,7 +17,7 @@ public class CurrencyPrint {
         }
 
         for (Currency currency : currencies) {
-            System.out.println(currency.getExchangeNames() + ", " + currency.getCurrentData());
+            System.out.println(currency.getCurrencyNames() + ", " + currency.getCurrentData());
             System.out.println("Last dif time - " + currency.getDifTime());
             System.out.println("Bid = " + currency.getBids() + ", Ask = " + currency.getAsks());
             System.out.println("Dif = " + currency.getDayDiffs() + ", Per = " + currency.getDayDifPercents());
