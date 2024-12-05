@@ -16,7 +16,12 @@ public class Helper {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.println("Enter the name of a currency please...");
-            return reader.readLine();
+            String currency = reader.readLine();
+            while (!currency.matches("[a-zA-Z]+")) {
+                System.out.println("Incorrect currency name. Example: USD, RUB, EUR...");
+                currency = reader.readLine();
+            }
+            return currency;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
