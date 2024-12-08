@@ -1,12 +1,14 @@
 package main.model.currency;
 
+import main.data.Currencies;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
 /**
- * Класс для вывода информации в консоль
+ * Класс для ввода и вывода информации в консоль
  */
 public class CurrencyPrint {
     private static final CurrencyParser parser = new CurrencyParser();
@@ -15,7 +17,7 @@ public class CurrencyPrint {
         String currencyForFilter = typeCurrencyName();
 
         List<Currency> currencies;
-        if (!currencyForFilter.isEmpty()) {
+        if (!currencyForFilter.equals(Currencies.ALL.getName())) {
             currencies = CurrencyFilter.filterByCurrency(currencyForFilter, parser.createListOfCurrencies());
         } else {
             currencies = parser.createListOfCurrencies();
@@ -31,13 +33,15 @@ public class CurrencyPrint {
     }
 
     private String typeCurrencyName() {
+        List<String> currencyNames = Currencies.getNames();
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            System.out.println("Enter the name of a currency please...");
-            String currency = reader.readLine();
-            while (!currency.matches("[a-zA-Z]+")) {
-                System.out.println("Incorrect currency name. Example: USD, RUB, EUR...");
-                currency = reader.readLine();
+            System.out.println("Enter name of a currency or enter 'ALL' if have to see all currencies. " + currencyNames);
+            String currency = reader.readLine().toUpperCase();
+            while (!currencyNames.contains(currency)) {
+                System.out.println("Not correct currency name. Examples: " + currencyNames);
+                currency = reader.readLine().toUpperCase();
             }
             return currency;
         } catch (IOException e) {
