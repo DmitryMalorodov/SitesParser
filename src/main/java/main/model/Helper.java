@@ -1,10 +1,13 @@
 package main.model;
 
+import main.data.Resources;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Helper {
 
@@ -12,16 +15,18 @@ public class Helper {
         return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
     }
 
-    public static String keyboardIn() {
+    public static String typeServiceName() {
+        List<String> serviceNames = Resources.getNames();
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            System.out.println("Enter the name of a currency please...");
-            String currency = reader.readLine();
-            while (!currency.matches("[a-zA-Z]+")) {
-                System.out.println("Incorrect currency name. Example: USD, RUB, EUR...");
-                currency = reader.readLine();
+            System.out.println("Enter the name of service: " + serviceNames);
+            String service = reader.readLine().toUpperCase();
+            while (!serviceNames.contains(service)) {
+                System.out.println("Incorrect service name. Examples: " + serviceNames);
+                service = reader.readLine().toUpperCase();
             }
-            return currency;
+            return service;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
