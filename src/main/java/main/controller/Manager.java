@@ -11,13 +11,13 @@ import main.model.currency.CurrencyPrint;
  */
 public class Manager {
 
-    public void manage(Resources resource) {
-        switch (resource) {
-            case CURRENCY -> {
+    public void manage() {
+        switch (Helper.typeServiceName()) {
+            case "CURRENCY" -> {
                 Connector.connect(Resources.CURRENCY.getUrl());
-                new CurrencyPrint().run(Helper.keyboardIn());
+                new CurrencyPrint().run();
             }
-            case COMMODITY -> {
+            case "COMMODITY" -> {
                 Connector.connect(Resources.COMMODITY.getUrl());
                 new Commodity().run();
             }
