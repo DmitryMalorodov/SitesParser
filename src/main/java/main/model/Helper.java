@@ -20,10 +20,10 @@ public class Helper {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
-            System.out.println("Enter the name of service: " + serviceNames);
+            System.out.println("Enter name of a service: " + serviceNames);
             String service = reader.readLine().toUpperCase();
             while (!serviceNames.contains(service)) {
-                System.out.println("Incorrect service name. Examples: " + serviceNames);
+                System.out.println("Not correct service name. Examples: " + serviceNames);
                 service = reader.readLine().toUpperCase();
             }
             return service;
