@@ -16,6 +16,7 @@ public class CurrencyPrint {
     public void run() {
         String currencyForFilter = typeCurrencyName();
 
+        //подготовка данных к выводу
         List<Currency> currencies;
         if (!currencyForFilter.equals(Currencies.ALL.getName())) {
             currencies = CurrencyFilter.filterByCurrency(currencyForFilter, parser.createListOfCurrencies());
@@ -23,15 +24,17 @@ public class CurrencyPrint {
             currencies = parser.createListOfCurrencies();
         }
 
+        //вывод в консоль
         for (Currency currency : currencies) {
             System.out.println(currency.getCurrencyNames() + ", " + currency.getCurrentData());
-            System.out.println("Last dif time - " + currency.getDifTime());
+            System.out.println("Last time of changes - " + currency.getDifTime());
             System.out.println("Bid = " + currency.getBids() + ", Ask = " + currency.getAsks());
             System.out.println("Dif = " + currency.getDayDiffs() + ", Per = " + currency.getDayDifPercents());
             System.out.println();
         }
     }
 
+    //ввод в консоль имени валюты и валидация ввода
     private String typeCurrencyName() {
         List<String> currencyNames = Currencies.getNames();
 
